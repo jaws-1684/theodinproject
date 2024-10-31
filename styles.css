@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    background: white;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.navbar {
+    background: #1f2937;
+    height: 60px;
+}
+
+.navbar a:hover {
+    color: lightseagreen;
+}
+
+
+.logo {
+    color: white;
+    font-size: 24px;
+
+}
+
+ul, a {
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.button {
+    background-color: #3882f6;
+    padding: 7px 40px;
+    border-radius: 10px;
+    font-size: 18px
+    color: white;
+    
+}
+
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.header {
+    background-color: #1f2937;
+    color: #fff;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.header h1 {
+    font-style: 3rem;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: white;
+}
+
+.header img {
+    height: 200px;
+    width: 500px;
+    background-color: rgba(128, 128, 128, 0.438);
+    /* complete later */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+}
+
+.container .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+ .header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    
+    
+
+}
+
