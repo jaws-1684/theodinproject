@@ -23,13 +23,13 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === 'rock' && computerChoice === 'scissors') ||
         (humanChoice === 'scissors' && computerChoice === 'paper')
     ) {
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`);
+        console.log(`You won! ${humanChoice} beats ${computerChoice}!`);
         humanScore += 1;
     } 
  
     
     else {
-        console.log(`You've lost. ${computerChoice} beats ${humanChoice}`);
+        console.log(`You've lost. ${computerChoice} beats ${humanChoice}!`);
         computerScore += 1;
     } 
 }
@@ -37,7 +37,22 @@ function playRound(humanChoice, computerChoice) {
 
 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection)
 
+function playGame() {
+    
+    while (true) {
+        
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        
+        playRound(humanSelection, computerSelection)
+        
+        console.log("Human score is: ", humanScore, "Computer score is: ", computerScore)
+        if (humanScore > 4 || computerScore > 4) {
+            break
+    }
+        
+    }
+}
+
+playGame()
