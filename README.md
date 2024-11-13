@@ -3,7 +3,7 @@
 
 ## Overview
 
-A simple command-line game where a human player competes against the computer in Rock, Paper, Scissors until one reaches five points.
+A simple game where a human player competes against the computer in Rock, Paper, Scissors until one reaches five points.
 
 ## Features
 
