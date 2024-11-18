@@ -20,12 +20,27 @@ function createGrid(numSquaresPerSide) {
         container.appendChild(square);
     }
 
-    
-    document.querySelectorAll('.box').forEach(box => {
-        box.addEventListener('mouseenter', (event) => {
+    let isMouseDown = false;
+
+// Listen for mousedown and mouseup events to track mouse button state
+document.addEventListener('mousedown', (event) => {
+    if (event.button === 0) { // Left mouse button
+        isMouseDown = true;
+    }
+});
+
+document.addEventListener('mouseup', () => {
+    isMouseDown = false;
+});
+
+// Apply event listeners to the boxes
+document.querySelectorAll('.box').forEach(box => {
+    box.addEventListener('mouseenter', (event) => {
+        if (isMouseDown) {
             event.target.style.backgroundColor = getRandomColor();
-        });
+        }
     });
+});
 }
 
 
