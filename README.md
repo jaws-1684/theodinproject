@@ -1,6 +1,6 @@
 # Stock Picker
 
-This Ruby script contains the `stock_picker` method, which helps you find the best days to buy and sell stocks for maximum profit from an array of stock prices.
+This Ruby script contains the `stock_picker` method, which finds the best days to buy and sell stocks for maximum profit from an array of stock prices.
 
 ## How It Works
 The `stock_picker` method takes an array of stock prices as input and returns:
