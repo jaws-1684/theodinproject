@@ -1,0 +1,16 @@
+---
+:secret_word:
+- e
+- x
+- i
+- s
+- t
+- s
+:guessed_word:
+- e
+- _
+- _
+- _
+- t
+- _
+:tries: 10
