@@ -32,14 +32,10 @@ class Board
 
   def valid_move?(pos, row=0)
     return nil unless pos.between?(1, 7)
+    return nil if row > 5 
+    return row if @cells[row][pos-1].nil?
     
-    if @cells[row][pos-1].nil?
-      row
-    elsif row < 5 
-      valid_move?(pos, row+1)
-    else
-      nil
-    end
+    valid_move?(pos, row+1) 
   end
 end
 
@@ -48,5 +44,7 @@ end
 # board.add(5, "\e[33m\u25CF\e[0m")
 # board.add(5, "\e[33m\u25CF\e[0m")
 # board.add(5, "\e[33m\u25CF\e[0m")
+# board.add(5, "\e[31m\u25CF\e[0m")
+# board.add(5, "\e[31m\u25CF\e[0m")
 # board.draw
 
