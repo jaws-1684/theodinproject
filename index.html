@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Form</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="left-block">
+        <img src="./img/halie-west-25xggax4bSA-unsplash.jpg" alt="boat">
+
+        <div class="odin">
+            <img src="./img/odin-lined.png" alt="viking">
+            <p>odin</p>
+        </div>
+        
+        <div class="credits">
+            <p>Photo by <a href="https://unsplash.com/photos/green-leaf-plant-in-close-up-photography-25xggax4bSA">Halie West </a>on<a href="https://unsplash.com/"> Unsplash</a></p>
+        </div>
+       
+    </div>
+
+    <div class="right-block">
+        <div class="start">
+            <p>This is not a real online service! You know you need something like this in your real life to help you realize your deepest dreams.</p>
+            <p>Sign up <em>now</em> to get started.</p>
+            <p>You <em>know</em> you want to.</p>
+        </div>
+        <div class="center">
+            <header class='form-header'>
+                <h2>Let's do this!</h2>
+            </header>
+          
+              <form action='' method='post' class='sign-up-form'>
+
+                <fieldset class="name">
+                    <div class='form-row'>
+                        <label for='first-name'>First Name</label>
+                        <input id='first-name' name='first-name' type='text' placeholder='John'/>
+                      </div>
+
+                    <div class="form-row">
+                          <label for="last-name">Last Name</label>
+                          <input id='last-name' name="last-name" type="text" placeholder="Doe">
+                    </div>
+                </fieldset>
+
+                <fieldset class="contact">
+                    <div class='form-row'>
+                        <label for='email'>Email</label>
+                        <input id='email'
+                               name='email'
+                               type='email'
+                               placeholder='joe@example.com'/>
+                    </div>
+                    <div class='form-row'>
+                        <label for='number'>Phone Number</label>
+                        <input id='number'
+                               name='number'
+                               type='tel'
+                               placeholder='8005550175'
+                               pattern="\d{10}"/>
+                    </div>
+                </fieldset>
+                  
+                <fieldset class="pass">
+                    <div class='form-row'>
+                        <label for='passwd'>Password</label>
+                        <input id='passwd'
+                               name='passwd'
+                               type='password'
+                               placeholder="********"
+                               />
+                    </div>
+                    <div class='form-row'>
+                        <label for='confirm-passwd'>Confirm Password</label>
+                        <input id='confirm-passwd'
+                               name='confirm-passwd'
+                               type='password'
+                               placeholder='********'
+                             />
+                    </div>
+                </fieldset>
+          
+                  
+                      
+                <div id="submit">
+                    <button type="submit">Create Account</button>
+                    <p>Already have an account?&nbsp<a style="color: #596D48; font-weight: bold; text-decoration: none; text-decoration-line: none;
+                        font-family: Verdana, Geneva, Tahoma, sans-serif;" href="https://google.com"> Log in</a></p>
+                </div>
+                </form>
+        </div>
+        <div class="end"></div>
+    </div>
+</body>
+</html>
