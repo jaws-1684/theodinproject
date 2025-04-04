@@ -1,0 +1,10 @@
+<!-- index.html.erb -->
+<h1 class="mb-4">Articles</h1>
+<ul class="list-group mb-4">
+  <% @articles.each do |article| %>
+    <li class="list-group-item">
+      <%= link_to article.title, article, class: "text-decoration-none" %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "New Article", new_article_path, class: "btn btn-primary" %>
