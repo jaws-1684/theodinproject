@@ -1,0 +1,16 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h2><%= @post.title %></h2>
+      <small class="text-muted">Posted by <%= @post.user.email %> on <%= @post.created_at.strftime("%B %d, %Y at %I:%M %p") %></small>
+    </div>
+    <div class="card-body">
+      <div class="post-content">
+        <%= simple_format(@post.body) %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= link_to "Back to Posts", posts_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
