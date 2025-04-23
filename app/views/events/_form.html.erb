@@ -1,0 +1,23 @@
+     <%= form_with model: x do |form| %>
+     <div>
+        <%= form.label(:title, "Title:") %>
+        <%= form.text_field :title, placeholder: "some weird title.." %>
+     </div>
+  
+     <div>
+      <%= form.label(:location, "Location:") %>
+      <%= form.text_field(:location, placeholder: "alabama")%>
+     </div>
+   
+    <div>
+      <%= form.label(:date, "Date:") %>
+      <%= form.date_field(:date, placeholder: "1066") %>
+    </div>
+    
+    <div>
+      <%= form.label(:body, "Description:") %>
+      <%= form.text_field(:body, placeholder: "whatever you want..") %>
+    </div>
+   
+    <%= form.submit "Create" %>
+  <% end %>
