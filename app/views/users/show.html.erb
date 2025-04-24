@@ -1,0 +1,17 @@
+<div class="Upcoming">
+	<p><strong>Upcoming</strong></p>
+	<% @attended_events.upcoming.each do |event| %>
+		<%= event.title %>
+		<%= event.date.strftime("%Y-%d-%m %H:%M") %>
+	<% end %>
+</div>
+
+
+<div class="past">
+	<p><strong>Past</strong></p>
+	<% @attended_events.past.each do |event| %>
+		<%= event.title %>
+		<%= event.date.strftime("%Y-%d-%m %H:%M") %>
+	<% end %>
+</div>
+
