@@ -1,0 +1,9 @@
+<div class="b-search">
+    <%= form_with url: "/flights", method: :get do |form| %>
+        <%= select_tag(:departure_id, options_for_select(@flight_options)) %>
+        <%= select_tag(:arrival_id, options_for_select(@flight_options)) %>
+        <%= select_tag(:passengers, options_for_select(1..4)) %>
+        <%= select_tag(:flight_date, options_for_select(@flight_dates)) %>
+        <%= form.submit "Search" %>
+    <% end %>
+</div>
