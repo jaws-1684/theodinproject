@@ -1,24 +1,21 @@
 class FlightsController < ApplicationController
   def index
-    @flight_options = Airport.all.map { |airport| airport.airport_code + "\s" + "(#{airport.city})"}
-    @flight_dates = Flight.pluck(:start_datetime).map { |d| d.strftime("%d/%m/%Y") }.uniq.sort
-
-    if params[:departure_code] && params[:arrival_code].present?
-      @results = db_interogation_results
+    @airports = Airport.all.order(:code)
+    @passenger_options = [1, 2, 3, 4]
+    @available_dates = Flight.select('DISTINCT DATE(start_datetime)').order('DATE(start_datetime)').map do |flight|
+      flight.start_datetime.to_date
     end
+    @flights = Flight.search(params) if search_params_present?
+    @search_performed = search_params_present?
+
+    @num_tickets = params[:num_tickets].to_i if params[:num_tickets].present?
   end
 
   private
 
-    def db_interogation_results
-      departure_airport = Airport.find_by(airport_code: params[:departure_code][0..2])
-      arrival_airport = Airport.find_by(airport_code: params[:arrival_code][0..2])
-      flight_date = Date.parse(params[:flight_date])
-
-      flights = Flight.where(
-        departure_airport_id: departure_airport.id,
-        arrival_airport_id: arrival_airport.id,
-        start_datetime: flight_date.all_day
-      )
+    def search_params_present?
+      params[:departure_airport_id].present? || 
+      params[:arrival_airport_id].present? || 
+      params[:date].present?
     end
 end
