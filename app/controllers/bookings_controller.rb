@@ -1,23 +1,11 @@
 class BookingsController < ApplicationController
-  def index
-    @bookings = Booking.all
-  end
 
   def new
-    @booking = Booking.new
     @flight = Flight.find(params[:flight_id])
-    params[:num_tickets].to_i.times { @booking.passengers.build }
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = "Flight not found."
-    redirect_to flights_path
-  end
+    @num_tickets = params[:num_tickets].to_i
 
-  def show
-    @booking = Booking.find(params[:id])
-    @flight = @booking.flight
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = "Booking not found."
-    redirect_to root_path
+    @booking = Booking.new(flight: @flight)
+    @num_tickets.times {@booking.passengers.build}
   end
 
   def create
@@ -28,18 +16,23 @@ class BookingsController < ApplicationController
       flash[:success] = "Booking was successfully created."
       redirect_to @booking, status: :see_other
     else 
-      @flight = Flight.find(@booking.flight_id)
+      @flight = @booking.flight
+      @num_tickets = @booking.passengers.size
       flash.now[:error] = "There was an error creating your booking."
       render 'new', status: :unprocessable_entity
     end
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = "Flight not found."
-    redirect_to flights_path
   end
+
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
 
   private
 
   def booking_params
-    params.require(:booking).permit(:flight_id, :num_tickets, passengers_attributes: [:id, :name, :email])
+    # params.require(:booking).permit(:flight_id, passengers_attributes: [:id, :name, :email])
+    params.expect(booking: [flight_id, passengers_attributes: [:name, :email]])
   end
 end
+
