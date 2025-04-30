@@ -34,7 +34,8 @@ airports = [
   { code: 'GVA', name: 'Geneva' },
   { code: 'LYS', name: 'Lyon' },
   { code: 'BUD', name: 'Budapest' },
-  { code: 'EDI', name: 'Edinburgh' }
+  { code: 'EDI', name: 'Edinburgh' },
+  { code: 'HIL', name: 'HILIUTI' }
 ]
 
 airports.each do |airport_data|
@@ -56,7 +57,8 @@ durations = {
   'VIE-DUB' => 160, 'DUB-VIE' => 165,
   'PRG-WAW' => 90, 'WAW-PRG' => 95,
   'LIS-ATH' => 215, 'ATH-LIS' => 220,
-  'HEL-MXP' => 185, 'MXP-HEL' => 190
+  'HEL-MXP' => 185, 'MXP-HEL' => 190,
+  'HIL-CDG'=> 240, 'CDG-HIL' => 240
 }
 
 

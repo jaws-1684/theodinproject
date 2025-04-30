@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.expect(booking: [:flight_id, passengers_attributes: [:name, :email]])
+    params.expect(booking: [:flight_id, { passengers_attributes: [[:name, :email]] }] )
   end
 end
 
