@@ -1,0 +1,77 @@
+<div class="booking-form">
+<% if @flight %>
+  <%= form_with model: @booking do |form| %>
+    <div class="form-data">
+      <%= form.label :flight_date, 'Departing at:' %>
+      <%= form.text_field :flight_date, 
+                          value: @flight.start_datetime.strftime("%d/%m/%Y %H:%M"), 
+                          disabled: true, 
+                          class: 'precompleted' %>
+    </div>
+    <div class="form-data">
+      <%= form.label :arrival_code, "Arriving at:" %>
+      <%= form.text_field :arrival_code, 
+                          value: "#{@flight.arrival_airport.airport_code} (#{@flight.arrival_airport.city})", 
+                          disabled: true, 
+                          class: 'precompleted' %>
+    </div>
+    <div class="form-data">
+      <%= form.label :flight_duration, 'Time in air:' %>
+      <%= form.text_field :flight_duration, 
+                          value: "#{@flight.flight_duration} minutes", 
+                          disabled: true, 
+                          class: 'precompleted' %>
+    </div>
+    <div class="form-data">
+      <%= form.label :departure_code, "From:" %>
+      <%= form.text_field :departure_code, 
+                          value: "#{@flight.departure_airport.airport_code} (#{@flight.departure_airport.city})", 
+                          disabled: true, 
+                          class: 'precompleted' %>
+    </div>
+    <div class="form-data">
+      <%= form.label :num_tickets, 'Tickets:' %>
+      <%= hidden_field_tag :num_tickets, params[:num_tickets] %>
+      <%= form.text_field :num_tickets_display, 
+                          value: params[:num_tickets], 
+                          readonly: true, 
+                          class: 'precompleted',
+                          disabled: true %>
+    </div>
+    
+    <div class="form-data">
+      <%= form.label :flight_id, 'FlightID:' %>
+      <%= form.hidden_field :flight_id, value: @flight.id %>
+      <%= form.text_field :flight_id_display, 
+                          value: @flight.id, 
+                          readonly: true, 
+                          class: 'precompleted',
+                          disabled: true %>
+    </div>
+
+    <h2>Passenger Information</h2>
+    
+    <%= form.fields_for :passengers do |passenger_form| %>
+      <div class="passenger-form">
+        <div class="form-data-name">
+          <%= passenger_form.label :name, 'Name:' %>
+          <%= passenger_form.text_field :name, placeholder: "John Doe", required: true %>
+        </div>
+        <div class="form-data-email">
+          <%= passenger_form.label :email, 'Email:' %>
+          <%= passenger_form.email_field :email, placeholder: "johndoe@example.com", required: true %>
+        </div>
+      </div>
+    <% end %>
+    
+    <div class="form-submit">
+      <%= form.submit 'Buy now' %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="error-message">
+    <p>Flight information not available. Please go back and select a flight.</p>
+    <%= link_to "Back to flights", flights_path, class: "button" %>
+  </div>
+<% end %>
+</div>

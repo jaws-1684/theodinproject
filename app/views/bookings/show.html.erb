@@ -1,0 +1,23 @@
+<div class="booking-details">
+  <h1>Booking Confirmation #<%= @booking.id %></h1>
+  
+  <div class="flight-info">
+    <h2>Flight Details</h2>
+    <p>Departure: <%= @flight.departure_airport.city %> (<%= @flight.departure_airport.airport_code %>)</p>
+    <p>Arrival: <%= @flight.arrival_airport.city %> (<%= @flight.arrival_airport.airport_code %>)</p>
+    <p>Date: <%= @flight.start_datetime.strftime("%B %d, %Y %H:%M") %></p>
+    <p>Duration: <%= @flight.flight_duration %> minutes</p>
+  </div>
+
+  <div class="passengers">
+    <h2>Passengers</h2>
+    <% @booking.passengers.each do |passenger| %>
+      <div class="passenger">
+        <p>Name: <%= passenger.name %></p>
+        <p>Email: <%= passenger.email %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Back to Flights", flights_path %>
+</div>

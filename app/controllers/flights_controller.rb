@@ -15,7 +15,7 @@ class FlightsController < ApplicationController
       arrival_airport = Airport.find_by(airport_code: params[:arrival_code][0..2])
       flight_date = Date.parse(params[:flight_date])
 
-      @flights = Flight.where(
+      flights = Flight.where(
         departure_airport_id: departure_airport.id,
         arrival_airport_id: arrival_airport.id,
         start_datetime: flight_date.all_day

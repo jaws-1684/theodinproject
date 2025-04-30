@@ -1,46 +1,37 @@
 <div class="search-flights">
-    
-    <%= form_with url: "/flights", method: :get do |form| -%>
-        <div class="b-search">
-        <%= select_tag :departure_code, options_for_select(@flight_options, params[:departure_code]) %>
-        <%= select_tag :arrival_code, options_for_select(@flight_options, params[:arrival_code]) %>
-        <%= select_tag :num_tickets, options_for_select(1..4, params[:num_tickets]) %>
-        <%= select_tag :flight_date, options_for_select(@flight_dates, params[:flight_date]) %>
-        <%= form.submit "Search" %>
-        </div>
-    <% end -%>
-
-
-
-    
-      
-        
-
+  <%= form_with url: '/flights', method: 'GET' do |form| %>
+    <div class="b-search">
+      <%= form.select :departure_code, options_for_select(@flight_options, params[:departure_code]) %>
+      <%= form.select :arrival_code, options_for_select(@flight_options, params[:arrival_code]) %>
+      <%= form.select :num_tickets, options_for_select(1..4, params[:num_tickets]) %>
+      <%= form.select :flight_date, options_for_select(@flight_dates, params[:flight_date]) %>
+      <%= form.submit "Search" %>
+    </div>
+  <% end %>
+</div>
 
 <div class="b-results">
-    <% if !@flights.empty? -%>
-        <%= form_with url: "/flights", method: :get do |form| -%>
-            <%= form.collection_radio_buttons :flight_id, @results, :id, :arrival_airport do |b| -%>
-                <div class="flights">
-                    <%= b.radio_button %>
-                    <%= b.label do %>
-                        <div class="departure_airport">
-                            <%= b.object.departure_airport.airport_code %>
-                            <%= b.object.departure_airport.city %>
-                            <%= b.object.start_datetime.strftime("%d/%m/%Y %H:%M") %>
-                        </div>
-                        <div class="arrival_airport">
-                            <%= b.object.flight_duration %> <span>MIN</span>
-                            <%= b.object.arrival_airport.airport_code %>
-                            <%= b.object.arrival_airport.city %>
-                            <%= form.submit "Select Flight" %>
-                        </div>
-                        <% end %>
-                </div>
-            <% end -%>
-        <% end -%>
+    <% if @results.nil? || @results.empty? -%>
+         <p>No Flights</p>
     <% else -%>
-        <p>No Flights</p>
-     <% end -%>
+    <%= form_with url: new_booking_path, method: 'GET' do |form| -%>
+            <% @results.each do |flight| %>
+            
+            <div class="reservation-details">
+                <%= form.radio_button :flight_id, flight.id %>
+                <%= flight.departure_airport.airport_code %>
+                <%= flight.departure_airport.city %>
+                <%= flight.start_datetime.strftime("%d/%m/%Y %H:%M") %>
+                <%= flight.flight_duration %>
+                <%= flight.arrival_airport.airport_code %>
+                <%= flight.arrival_airport.city %>
+            </div>
+                
+            <% end -%>
+            <%= hidden_field_tag :num_tickets, params[:num_tickets] %>
+            <%= form.submit "Make a reservation" %>
+        <% end -%>   
+       
+    <% end -%>
 
 </div>
