@@ -23,7 +23,120 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      header {
+        background-color: #3a86ff;
+        color: white;
+        padding: 20px 0;
+        margin-bottom: 30px;
+      }
+      header h1 {
+        margin: 0;
+        text-align: center;
+      }
+      .search-form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      select, input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .btn {
+        background-color: #3a86ff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #2667cc;
+      }
+      .flight-list {
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+      .flight-item {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      .flight-item:last-child {
+        border-bottom: none;
+      }
+      .flight-info {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 25px;
+      }
+      .booking-details {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .passenger-form {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+      }
+      .passenger-form:last-child {
+        border-bottom: none;
+      }
+      .notice {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+      }
+      .error {
+        color: #721c24;
+      }
+    </style>
+  </head>
+
   <body>
-    <%= yield %>
+    <header>
+      <div class="container">
+        <h1>Flight Booker</h1>
+      </div>
+    </header>
+    
+    <div class="container">
+      <% if notice %>
+        <div class="notice">
+          <%= notice %>
+        </div>
+      <% end %>
+      
+      <%= yield %>
+    </div>
   </body>
 </html>

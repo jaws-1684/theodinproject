@@ -13,13 +13,11 @@ class BookingsController < ApplicationController
     
     
     if @booking.save
-      flash[:success] = "Booking was successfully created."
-      redirect_to @booking, status: :see_other
+      redirect_to @booking, status: :see_other, notice: "Booking was successfully created."
     else 
       @flight = @booking.flight
       @num_tickets = @booking.passengers.size
-      flash.now[:error] = "There was an error creating your booking."
-      render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_entity, notice: "There was an error creating your booking."
     end
   end
 
@@ -31,8 +29,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    # params.require(:booking).permit(:flight_id, passengers_attributes: [:id, :name, :email])
-    params.expect(booking: [flight_id, passengers_attributes: [:name, :email]])
+    params.expect(booking: [:flight_id, passengers_attributes: [:name, :email]])
   end
 end
 

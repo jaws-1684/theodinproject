@@ -13,8 +13,8 @@ class Flight < ApplicationRecord
   end
   
   def duration_in_hours_minutes
-    hours = duration / 60
-    minutes = duration % 60
+    hours = flight_duration / 60
+    minutes = flight_duration % 60
     "#{hours}h #{minutes}m"
   end
   

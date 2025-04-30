@@ -1,37 +1,74 @@
-<div class="search-flights">
-  <%= form_with url: '/flights', method: 'GET' do |form| %>
-    <div class="b-search">
-      <%= form.select :departure_code, options_for_select(@flight_options, params[:departure_code]) %>
-      <%= form.select :arrival_code, options_for_select(@flight_options, params[:arrival_code]) %>
-      <%= form.select :num_tickets, options_for_select(1..4, params[:num_tickets]) %>
-      <%= form.select :flight_date, options_for_select(@flight_dates, params[:flight_date]) %>
-      <%= form.submit "Search" %>
+<h2>Search Flights</h2>
+
+<div class="search-form">
+  <%= form_with url: flights_path, method: :get, local: true do |f| %>
+    <div class="row">
+      <div class="col-md-3 form-group">
+        <%= f.label :departure_airport_id, "From" %>
+        <%= f.collection_select :departure_airport_id, @airports, :id, :to_s, { include_blank: "Select departure airport", selected: params[:departure_airport_id] }, { class: "form-control" } %>
+      </div>
+      
+      <div class="col-md-3 form-group">
+        <%= f.label :arrival_airport_id, "To" %>
+        <%= f.collection_select :arrival_airport_id, @airports, :id, :to_s, { include_blank: "Select arrival airport", selected: params[:arrival_airport_id] }, { class: "form-control" } %>
+      </div>
+      
+      <div class="col-md-3 form-group">
+        <%= f.label :date, "Date" %>
+        <%= f.select :date, 
+          options_for_select(
+            @available_dates, params[:date]), 
+          { include_blank: "Select date" }, 
+          { class: "form-control" } 
+        %>
+      </div>
+      
+      <div class="col-md-3 form-group">
+        <%= f.label :num_tickets, "Number of Passengers" %>
+        <%= f.select :num_tickets, 
+          options_for_select(@passenger_options, params[:num_tickets]), 
+          { include_blank: "Select passengers" }, 
+          { class: "form-control" } 
+        %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.submit "Search Flights", class: "btn" %>
     </div>
   <% end %>
 </div>
 
-<div class="b-results">
-    <% if @results.nil? || @results.empty? -%>
-         <p>No Flights</p>
-    <% else -%>
-    <%= form_with url: new_booking_path, method: 'GET' do |form| -%>
-            <% @results.each do |flight| %>
-            
-            <div class="reservation-details">
-                <%= form.radio_button :flight_id, flight.id %>
-                <%= flight.departure_airport.airport_code %>
-                <%= flight.departure_airport.city %>
-                <%= flight.start_datetime.strftime("%d/%m/%Y %H:%M") %>
-                <%= flight.flight_duration %>
-                <%= flight.arrival_airport.airport_code %>
-                <%= flight.arrival_airport.city %>
+<% if @search_performed %>
+  <% if @flights.present? %>
+    <h2>Available Flights</h2>
+    
+    <%= form_with url: new_booking_path, method: :get, local: true do |f| %>
+      <%= f.hidden_field :num_tickets, value: @num_tickets %>
+      
+      <div class="flight-list">
+        <% @flights.each do |flight| %>
+          <div class="flight-item">
+            <%= f.radio_button :flight_id, flight.id %>
+            <div class="flight-info">
+              <div>
+                <strong>From:</strong> <%= flight.departure_airport.to_s %><br>
+                <strong>To:</strong> <%= flight.arrival_airport.to_s %>
+              </div>
+              <div>
+                <strong>Date:</strong> <%= flight.formatted_datetime %><br>
+                <strong>Duration:</strong> <%= flight.duration_in_hours_minutes %>
+              </div>
             </div>
-                
-            <% end -%>
-            <%= hidden_field_tag :num_tickets, params[:num_tickets] %>
-            <%= form.submit "Make a reservation" %>
-        <% end -%>   
-       
-    <% end -%>
-
-</div>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.submit "Select Flight", class: "btn" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No flights found matching your search criteria. Please try different parameters.</p>
+  <% end %>
+<% end %>
