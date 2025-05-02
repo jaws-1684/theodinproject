@@ -1,0 +1,19 @@
+<span><%= link_to "NewKitten", new_kitten_path %></span>
+<div class="all-kittens-container">
+	<% @kittens.each do |kitten| %>
+	<div class="kitten">
+		<div class="image-container">
+			<% if kitten.image -%>
+			<%= image_tag kitten.image%>
+		<% else -%>
+			<p>"No image"</p>
+		<% end -%>	
+		</div>
+		
+		<span>Name:<%= kitten.name%></span>
+		<%= link_to "Show kitten info", kitten_path(kitten.id) %>
+			<%= link_to "Delete kitten", kitten_path(kitten.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+	
+	</div>
+	<% end %>
+</div>

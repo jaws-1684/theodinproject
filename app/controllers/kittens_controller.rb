@@ -1,6 +1,6 @@
 class KittensController < ApplicationController
 	def index
-		@kittens = Kitten.new
+		@kittens = Kitten.all
 	end
 
 	def show
@@ -14,10 +14,14 @@ class KittensController < ApplicationController
 	def create
 		@kitten = Kitten.new(kitten_params)
 
+		@kitten.image = @kitten.get_image(@kitten.cuteness)
+
 		if @kitten.save
 			redirect_to @kitten, notice: "Kitten was succesefully saved"
 		else
-			render 'new', status: :unprocessable_entity, notice: "There was an error creating your kitten."	
+			flash[:error] = "There was an error creating your kitten."	
+			render 'new', status: :unprocessable_entity
+		end	
 	end
 
 	def edit
@@ -43,7 +47,7 @@ class KittensController < ApplicationController
 	private
 
 	def kitten_params
-		params.expect(kitten: [:name, :age, :cuteness, :softness])
+		params.expect(kitten: [:name, :age, :cuteness, :softness, :image])
 	end
 		
 end

@@ -23,6 +23,15 @@
   </head>
 
   <body>
+    <%= link_to "Home", root_path %>
+    
+
+   
+    <% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+  <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,5 @@
+	<span>Age:<%= @kitten.age%></span>
+	<span>Cuteness:<%= @kitten.cuteness%></span>
+	<span>Softness:<%= @kitten.softness%></span>
+	<%= link_to "Edit kitten info", edit_kitten_path %>
+	<%= link_to "Delete kitten", kitten_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
