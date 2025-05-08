@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
+
+.nav-link.active.navbar-brand {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.6rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav-link.active.navbar-brand:hover {
+  color: lightgray;
+  transform: scale(1.05);
+}
+
+svg {
+   transform: rotate(90deg);
+}
+
+.search-container {
+  margin-top: 5%;
+  padding: 0 20% 0 20%;
+}
+
+.btn{
+  margin-top: 20px;
+  margin-bottom: 10px;s
+}
+
+.flight-list {
+
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+
+}
+
+.flight-item {
+  display: flex;
+  gap: 20px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  grid-column: 1/10;
+  padding: 10px;
+  background: #F0F0F0;
+}  
+
+.search-form {
+  margin-bottom: 5%;
+}
+
+.from, .info {
+  display: flex;
+  gap: 10px;
+}
+
+.company-ico {
+  font-family: "Fascinate Inline", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  border: 1px solid rose;
+  text-align: center;
+  font-size: 30px;
+  color: #660080;
+}

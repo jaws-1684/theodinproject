@@ -16,11 +16,12 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to @booking, status: :see_other, notice: "Booking was successfully created."
 
-      @emails.each {|email| PassengerMailer.confirmation_email(email).deliver_now!}
+      @emails.each {|email| PassengerMailer.confirmation_email(email, @booking).deliver_now!}
     else 
       @flight = @booking.flight
       @num_tickets = @booking.passengers.size
-      render 'new', status: :unprocessable_entity, notice: "There was an error creating your booking."
+      flash[:errors] = "There was an error creating your booking."
+      render 'new', status: :unprocessable_entity
     end
   end
 

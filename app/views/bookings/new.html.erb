@@ -15,7 +15,7 @@
     <%= f.hidden_field :flight_id, value: @flight.id %>
     
     <% if @booking.errors.any? %>
-      <div class="error">
+      <div class="alert alert-danger" role="alert">
         <h4><%= pluralize(@booking.errors.count, "error") %> prevented this booking from being saved:</h4>
         <ul>
           <% @booking.errors.full_messages.each do |message| %>
@@ -26,7 +26,7 @@
     <% end %>
 
      <div data-controller="passengers">
-      <button type="button" data-action="click->passengers#add">Add another passenger</button>
+      <button class="btn btn-primary" type="button" data-action="click->passengers#add">Add another passenger</button>
 
   <div data-passengers-target="formContainer">
     <% @booking.passengers.each_with_index do |passenger, index| %>
@@ -42,7 +42,7 @@
             <%= passenger_form.email_field :email, class: 'form-control' %>
           </div>
         <% end %>
-        <button data-action="click->passengers#remove">Remove passenger</button>
+        <button data-action="click->passengers#remove" class="btn btn-danger">Remove passenger</button>
       </div>
     <% end %>
   </div>
@@ -60,7 +60,7 @@
       <label>Email</label>
       <input type="email" name="booking[passengers_attributes][__INDEX__][email]" class="form-control">
     </div>
-    <button type="button" data-action="click->passengers#remove">Remove passenger</button>
+    <button class="btn btn-danger" type="button" data-action="click->passengers#remove">Remove passenger</button>
   </div>
 </template>
 </div>
@@ -69,7 +69,7 @@
     
     
     <div class="form-group">
-      <%= f.submit "Create Booking", class: "btn" %>
+      <%= f.submit "Create Booking", class: "btn btn-success" %>
     </div>
   <% end %>
 </div>

@@ -19,6 +19,7 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag :main, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -35,8 +36,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item font-size-base">
-          <%= link_to "Flight Booker", root_path, class: "nav-link active"%>
+        <li class="nav-item">
+          <%= link_to "Flight Booker", root_path, class: "nav-link active navbar-brand"%>
         </li>
     </div>
   </div>
@@ -44,7 +45,7 @@
     
     <div class="search-container">
       <% if notice %>
-        <div class="notice">
+        <div class="alert alert-success" role="alert">
           <%= notice %>
         </div>
       <% end %>

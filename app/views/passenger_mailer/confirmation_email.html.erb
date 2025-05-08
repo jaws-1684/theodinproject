@@ -1,9 +1,24 @@
-<h1>Welcome to example.com, </h1>
+<h1>Thank you, <%= @passenger.name %>!</h1>
+
 <p>
-  You have successfully signed up to example.com,
-  your username is: .<br>
+  Your flight booking has been successfully confirmed.<br>
+  Below are your flight details:
 </p>
+
+ <p>
+    <strong>From:</strong> <%= @booking.flight.departure_airport.to_s %><br>
+    <strong>To:</strong> <%= @booking.flight.arrival_airport.to_s %><br>
+    <strong>Date:</strong> <%= @booking.flight.formatted_datetime %><br>
+    <strong>Duration:</strong> <%= @booking.flight.duration_in_hours_minutes %>
+  </p>
+
 <p>
-  To login to the site, just follow this link: %>.
+  You can view your booking anytime here: 
+  <%= link_to 'View My Booking', booking_url(@passenger.booking) %>
 </p>
-<p>Thanks for joining and have a great day!</p>
+
+<p>
+  Thank you for choosing our airline. Safe travels!
+</p>
+
+
