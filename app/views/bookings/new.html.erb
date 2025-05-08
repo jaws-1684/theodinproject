@@ -24,26 +24,53 @@
         </ul>
       </div>
     <% end %>
-    
+
+     <div data-controller="passengers">
+      <button type="button" data-action="click->passengers#add">Add another passenger</button>
+
+  <div data-passengers-target="formContainer">
     <% @booking.passengers.each_with_index do |passenger, index| %>
-      <div class="passenger-form">
+      <div data-passengers-target="passengerForm" class="passenger-form">
         <h4>Passenger <%= index + 1 %></h4>
         <%= f.fields_for :passengers, passenger do |passenger_form| %>
           <div class="form-group">
             <%= passenger_form.label :name %>
             <%= passenger_form.text_field :name, class: 'form-control' %>
           </div>
-          
           <div class="form-group">
             <%= passenger_form.label :email %>
             <%= passenger_form.email_field :email, class: 'form-control' %>
           </div>
         <% end %>
+        <button data-action="click->passengers#remove">Remove passenger</button>
       </div>
     <% end %>
+  </div>
+
+  
+
+  <template data-passengers-target="formTemplate">
+  <div data-passengers-target="passengerForm" class="passenger-form" data-index="__INDEX__">
+    <h4 data-passengers-target="output"></h4>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" name="booking[passengers_attributes][__INDEX__][name]" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="booking[passengers_attributes][__INDEX__][email]" class="form-control">
+    </div>
+    <button type="button" data-action="click->passengers#remove">Remove passenger</button>
+  </div>
+</template>
+</div>
+
+
+    
     
     <div class="form-group">
       <%= f.submit "Create Booking", class: "btn" %>
     </div>
   <% end %>
 </div>
+

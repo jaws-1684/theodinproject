@@ -10,10 +10,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    
+    @passengers = @booking.passengers
+    @emails = @passengers.map {|p| p.email}
     
     if @booking.save
       redirect_to @booking, status: :see_other, notice: "Booking was successfully created."
+
+      @emails.each {|email| PassengerMailer.confirmation_email(email).deliver_now!}
     else 
       @flight = @booking.flight
       @num_tickets = @booking.passengers.size
@@ -31,5 +34,6 @@ class BookingsController < ApplicationController
   def booking_params
     params.expect(booking: [:flight_id, { passengers_attributes: [[:name, :email]] }] )
   end
+
 end
 
