@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 /*
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
@@ -64,18 +65,114 @@ h1, h2, h3, h4, h5, h6 {
 
 :root {
   --bg-primary: #ffffff;
-  --bg-secondary: #0891b2;
+  --bg-secondary: #151934;
   --color-primary: #575655;
   --color-secondary: #ffffff;
   --color-heading: #060b04;
+  --font-h1: "Playfair Display", serif;
+  --font-h2: "Playfair Display", serif;
+  --font-h3: 1.5625rem;
+  --font-para: roboto-medium, sans-serif;
+  --base-size: 1.5625rem;
 }
 
 body {
-  min-height: 100vh;
-  max-width: 100vw;
   background-color: var(--bg-primary);
 }
+a {
+  color: black;
+  text-decoration: none;
+}
+.skew {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background-color: var(--bg-secondary);
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+  z-index: -1;
+}
 
-#sprites {
-  display: none;
+section {
+  margin: 3% 15% 0 15%;
+}
+section h1 {
+  font-family: var(--font-h1);
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+section .container {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) );
+}
+
+section .card {
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  transition: scale 0.4s ease-in 0.2;
+}
+section .card:hover {
+  transform: scale(1.05);
+}
+section .img {
+  height: 300px;
+  background-color: var(--bg-secondary);
+  text-align: center;
+  color: white;
+  font-size: 1.875rem;
+}
+
+section .name {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+section .icons {
+  height: var(--base-size);
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+section .ico {
+  width: var(--base-size);
+  height: var(--base-size);
+}
+section i {
+  font-size: var(--base-size);
+}
+section p {
+  color: var(--color-primary);
+  font-family: var(--font-para);
+}
+
+section h3 {
+  font-size: var(--font-h3);
+  font-family: var(--font-h2);
+  color: var(--color-heading);
+}
+
+.project {
+  padding: 10px 20px 10px 20px;
+}
+
+section .para {
+  padding: 5px 20px 20px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    margin: 5% 5% 0 5%;
+  }
+  section .card:hover {
+  transform: scale(1);
+}
+}
+@media only screen and (max-width: 1200px) and (min-width: 600px) {
+  section {
+    margin: 3% 10% 0 10%;
+  }
+  section .card:hover {
+  transform: scale(1);
+}
 }
