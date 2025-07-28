@@ -63,25 +63,12 @@ header .card {
 	box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
+
 header .icons {
 	align-self: end;
-	display: flex;
-	justify-items: center;
-	align-items: center;
-	gap: 20px;
-	padding: 10px;
-	margin-right: 40px;
 }
-
-header i {
-	font-size: 35px;
-	transition: font-size 0.1s ease-in 0.2s
-}
-header i:hover {
-  	font-size: 40px;
-	}
-
  /* Extra small devices (phones, 600px and down) */
+
 @media only screen and (max-width: 600px) {
 	header {
 		margin: 4% 4% 0 4%;
