@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tic Tac Toe</title>
+	<script src="script.js" defer></script>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="header">
+		<h1>Welcome to Tictactoe</h1>
+		<h2 class="welcome">Enter your names</h2>
+		<h3 class="info"></h3>
+		<fieldset>
+			<label for="p1">Player 1's name: </label>
+			<input id="p1" type="text">
+			<span><strong>&nbspVS&nbsp</strong></span>
+			<label for="p2">Player 2's name: </label>
+			<input id="p2" type="text">
+		</fieldset>
+		<button class="start">Start Game</button>
+	</div>
+	<main class="main hidden">
+		<div class="wrapper">
+			<h2 class="message">Game just started</h2>
+			<div class="players">
+				<div class="player1"></div>
+				<div class="player2"></div>
+				<button class="reset">reset</button>
+				<button class="new">new</button>
+			</div>
+			
+			<div class="game-container"><div class="cell" data-attribute="0"></div><div class="cell" data-attribute="1"></div><div class="cell" data-attribute="2"></div><div class="cell" data-attribute="3"></div><div class="cell" data-attribute="4"></div><div class="cell" data-attribute="5"></div><div class="cell" data-attribute="6"></div><div class="cell" data-attribute="7"></div><div class="cell" data-attribute="8"></div></div>			
+		</div>
+	</main>
+</body>
+</html>
