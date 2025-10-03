@@ -1,0 +1,16 @@
+<%= @event.title %>
+<%= @event.date %>
+<%= @event.location %>
+<%= @event.body %>
+
+<div>
+	<h2>
+		<% @event.attendees.each do |attendee| %>
+			<%= attendee.email %>
+			<% end %>
+	</h2>
+</div>
+
+<% unless @event.attendees.include?(current_user) %>
+  <%= button_to "Attend this Event", event_event_attendaces_path(@event), method: :post %>
+<% end %>
