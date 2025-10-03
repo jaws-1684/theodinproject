@@ -1,0 +1,27 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <h1 class="mb-0"><%= @article.title %></h1>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= @article.body %></p>
+    <div class="d-flex gap-2 mb-3">
+      <%= link_to "Edit", edit_article_path(@article), class: "btn btn-sm btn-outline-secondary" %>
+      <%= link_to "Destroy", article_path(@article), class: "btn btn-sm btn-outline-danger", data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+    </div>
+  </div>
+</div>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<div class="card mt-4">
+  <div class="card-header">
+    <h2 class="h5 mb-0">Add a comment:</h2>
+  </div>
+  <div class="card-body">
+    <%= render "comments/form", article: @article %>
+  </div>
+</div>
