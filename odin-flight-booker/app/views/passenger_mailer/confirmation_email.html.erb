@@ -1,0 +1,24 @@
+<h1>Thank you, <%= @passenger.name %>!</h1>
+
+<p>
+  Your flight booking has been successfully confirmed.<br>
+  Below are your flight details:
+</p>
+
+ <p>
+    <strong>From:</strong> <%= @booking.flight.departure_airport.to_s %><br>
+    <strong>To:</strong> <%= @booking.flight.arrival_airport.to_s %><br>
+    <strong>Date:</strong> <%= @booking.flight.formatted_datetime %><br>
+    <strong>Duration:</strong> <%= @booking.flight.duration_in_hours_minutes %>
+  </p>
+
+<p>
+  You can view your booking anytime here: 
+  <%= link_to 'View My Booking', booking_url(@passenger.booking) %>
+</p>
+
+<p>
+  Thank you for choosing our airline. Safe travels!
+</p>
+
+

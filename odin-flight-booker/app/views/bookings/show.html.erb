@@ -1,0 +1,27 @@
+<h2>Booking Confirmation</h2>
+
+<div class="booking-details">
+  <h3>Booking Reference: #<%= @booking.id %></h3>
+  
+  <h3>Flight Details</h3>
+  <p>
+    <strong>From:</strong> <%= @booking.flight.departure_airport.to_s %><br>
+    <strong>To:</strong> <%= @booking.flight.arrival_airport.to_s %><br>
+    <strong>Date:</strong> <%= @booking.flight.formatted_datetime %><br>
+    <strong>Duration:</strong> <%= @booking.flight.duration_in_hours_minutes %>
+  </p>
+  
+  <h3>Passengers</h3>
+  <% @booking.passengers.each do |passenger| %>
+    <div class="passenger-info">
+      <p>
+        <strong>Name:</strong> <%= passenger.name %><br>
+        <strong>Email:</strong> <%= passenger.email %>
+      </p>
+    </div>
+  <% end %>
+  
+  <p>Thank you for your booking. A confirmation email will be sent to all passengers.</p>
+  
+  <p><%= link_to "Book Another Flight", root_path, class: "btn btn-primary" %></p>
+</div>
