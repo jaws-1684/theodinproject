@@ -1,0 +1,90 @@
+footer {
+  background-color: var(--bg-secondary);
+  margin-top: 100px;
+  padding: 50px;
+  padding-right: 15%;
+  color: var(--color-secondary);
+}
+footer h1 {
+	font-family: var(--font-h1);
+	font-weight: 400;
+	font-size: var(--h1-size);
+	margin-bottom: 20px;
+}
+
+footer .icons, .b-phone {
+	margin-top: 20px;
+} 
+footer p {
+	font-family: var(--font-para);
+	font-size: max(18px, 1vw);
+	font-weight: 200;
+}
+.road {
+	margin-top: 20px;
+}
+
+footer .container {
+	width: 100%;
+	display: flex;
+	gap: 50px;
+	justify-content: space-between;
+	align-items: start;
+}
+
+footer i {
+	color: var(--color-secondary);
+}
+
+.b-phone, .b-email {
+	display: flex;
+	gap: 30px;
+	justify-content: start;
+	justify-items: center;
+}
+.ico.phone, .ico.email {
+	height: 30px;
+	width: 30px;
+}
+.contact {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: start;
+	gap: 20px;
+}
+footer img {
+	width: 100%;
+	height: 100%;
+} 
+
+@media only screen and (max-width: 600px) {
+	footer {
+	 padding: 0;
+	}
+
+	footer .container {
+		flex-direction: column;
+	}
+		footer .img {
+		width: 100%;
+	}
+	.contact {
+	padding: 7%;
+} 
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 600px) {
+	footer {
+	 padding: 30px;
+	}
+	footer .img {
+		width: 100%;
+	}
+
+	footer .container {
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+	}
+}
