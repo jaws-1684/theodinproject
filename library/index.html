@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Library</title>
+	<script src="./library.js" defer></script>
+	<script src="./modal.js" defer></script>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	
+		<div class="library-container">
+		<table class="rounded-corners">
+      <caption><h1>Library</h1>
+      	<div class="back-drop">
+      	</div>
+      	<div class="dropdown-container">
+	        <button class="new">Add a new book</button>
+	        <div class="dropdown-menu">
+	        	<div class="container">
+	        		<div class="title"><h1>New Book</h1></div>
+	        		<div class="cls-btn" style="float: right; transform: translateY(-35px);"><button id="close">Close</button></div>
+	        	</div>
+	        	<form action="#" id="newBook">
+        		 	<fieldset>      		
+			        	<div class="field">
+			        		<label for="title">Title</label>
+			        		<input id="title" type="text">
+			        	</div>
+			        	<div class="field">
+			        		<label for="Author">Author</label>
+			        		<input id="author" type="text">
+			        	</div>
+			        	<div class="field">
+			        		<label for="year">Year</label>
+			        		<input id="year" type="number">
+			        	</div>
+			        	<div class="field">
+			        			<label for="status">Pages</label>
+			        			<input id="pages" type="text">
+			        	</div>
+			        	<div class="field">
+			        			<label for="status">Status</label>
+			        			<input id="status" type="text">
+			        	</div>
+			        </fieldset>
+			          <button class="add">Add book</button>
+	        		</form>	       
+	        </div>	
+    		</div>	
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Author</th>
+          <th scope="col" rowspan="6">Title</th>
+          <th scope="col">Year</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Status</th>
+          <th style="border-right: none"></th>
+          <th style="border-left: none"></th>
+        </tr>
+      	</thead>
+    	</table>  
+		</div>
+		<dialog>
+  <button autofocus>Close</button>
+  	<p>This modal dialog has a groovy backdrop!</p>
+	</dialog>
+</body>
+</html>
