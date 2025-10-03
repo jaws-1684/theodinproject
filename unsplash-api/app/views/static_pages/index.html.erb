@@ -1,0 +1,26 @@
+<div class="center-content">
+	<div class="search-container">
+	<%= form_with url: '/index', method: :get do |form| %>
+	<%= form.label :user_id, "Enter unsplash users link" %>
+	<%= form.text_field :user_id %>
+
+		<%= form.submit "Search" %>
+	
+<% end -%>
+</div>
+
+
+<div class="images-container">
+	<% if !@photos.nil? %>
+	
+	<% @photos.each do |url| %>
+
+		<div class="image-card">
+		<%= image_tag url %>
+		</div>
+	<% end -%>
+ 
+<% end -%>	
+</div>
+
+</div>
